@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.application'
+}
+
+def appName = "CAt"
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "cn.hui.tally"
+        minSdkVersion 22
+        targetSdkVersion 30
+        versionCode 3
+        versionName "1.3"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "${appName}-${defaultConfig.versionName}-${variant.buildType.name}.apk"
+        }
+    }
+
+
+
+}
+
+dependencies {
+
+    def core_version = "1.3.2"
+
+    //Java
+    implementation "androidx.core:core:$core_version"
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+
+    implementation 'com.github.seagazer:animlogoview:1.0.2'
+
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+
+
+
+}
